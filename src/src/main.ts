@@ -1,4 +1,5 @@
 import {visitedOnTick, visitedPageSetup, visitedTMSetup} from "./visited";
+import {favoritesOnTick, favoritesPageSetup, favoritesTMSetup} from "./favorites";
 
 export function main(this: any) {
   'use strict';
@@ -7,6 +8,7 @@ export function main(this: any) {
   function TM_setup() {
     // Запуск на старте TamperMonkey
     visitedTMSetup()
+    favoritesTMSetup()
   }
 
   TM_setup()
@@ -14,6 +16,7 @@ export function main(this: any) {
   function tick() {
     // Функции, которые необходимо запускать, каждые 500 мс
     visitedOnTick()
+    favoritesOnTick()
 
     return tick
   }
@@ -21,6 +24,7 @@ export function main(this: any) {
   function pageSetup() {
     // Функции для запуска при window load
     visitedPageSetup()
+    favoritesPageSetup()
 
   }
 

@@ -1,26 +1,6 @@
-type MessageToTM = {
-  source: 'page',
-  payload: {
-    type: 'add_to_visited',
-    value: string
-  } | { type: 'get_visited' }
-}
+import {MessageToPage, MessageToTM} from "../types";
+import {getAllAdsOnPage, isElementAnchorTag, urlToId} from "../util";
 
-type MessageToPage = {
-  source: 'tm',
-  payload: {
-    type: 'visited',
-    value: string[]
-  }
-}
-
-function isElementAnchorTag(node: Element): node is HTMLAnchorElement {
-  return 'href' in node
-}
-
-function urlToId(url: string) {
-  return url.split('/item/')[1]?.split('/')[0]
-}
 
 function getVisitedFromStorage() {
   let visited: string[]
@@ -93,7 +73,8 @@ function injectStyles() {
     position: relative;
     opacity: 0.7;
   }
-  .item-visited::after {
+  .item-visited::before {
+    z-index: 1;
     content: 'visited';
     background: #ffffffb0;
     position: absolute;
@@ -110,7 +91,7 @@ function injectStyles() {
 
 function paintVisited(visited: string[]) {
   const visitedSet = new Set(visited)
-  document.querySelectorAll('.x3ct3a4 > a').forEach((node) => {
+  getAllAdsOnPage().forEach((node) => {
     if (!isElementAnchorTag(node)) return
     const id = urlToId(node.href)
     if (visitedSet.has(id)) {
