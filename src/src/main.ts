@@ -5,20 +5,26 @@ export function main(this: any) {
 
 
   function TM_setup() {
+    // Запуск на старте TamperMonkey
     visitedTMSetup()
   }
 
   TM_setup()
 
   function tick() {
+    // Функции, которые необходимо запускать, каждые 500 мс
     visitedOnTick()
 
     return tick
   }
 
-  window.onload = function () {
+  function pageSetup() {
+    // Функции для запуска при window load
     visitedPageSetup()
+
   }
+
+  window.onload = pageSetup
 
   setInterval(tick(), 500)
 }
