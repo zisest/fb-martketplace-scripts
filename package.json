@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "@types/terser-webpack-plugin": "^1.2.1",
+    "@types/webpack": "^4.4.23",
+    "cross-env": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.8.0",
+    "typescript": "^3.4.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "scripts": {
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
+    "build-dev": "npm run build -- --mode=development",
+    "build-clip": "run-s build content-to-clipboard",
+    "build-clip-dev": "run-s build-dev content-to-clipboard",
+    "content-to-clipboard": "clip < dist/script.user.js"
+  },
+  "dependencies": {
+    "@types/js-cookie": "^3.0.2",
+    "js-cookie": "^3.0.1"
+  }
+}
