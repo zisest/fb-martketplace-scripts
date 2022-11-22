@@ -71,21 +71,23 @@ function injectStyles() {
   styles.innerHTML = `
   .item-visited {
     position: relative;
+  }
+  .item-visited > div {
     opacity: 0.7;
   }
   .item-visited::before {
     z-index: 1;
     content: 'visited';
-    background: #ffffffb0;
+    background: #fff;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: -8px;
+    right: -3px;
     padding: 3px 7px;
     font-size: 1.2rem;
     border-radius: 4px;
   }
   `
-  console.log('styles', styles)
+  // console.log('styles', styles)
   document.head.appendChild(styles)
 }
 
@@ -134,7 +136,7 @@ export function visitedTMSetup() {
   }
 
   window.addEventListener('message', e => {
-    console.log(e.data)
+    // console.log(e.data)
     if (e.data.source === 'page') handle(e.data)
   })
 }

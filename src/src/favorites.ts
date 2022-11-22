@@ -119,10 +119,14 @@ function injectStyles() {
     left: 8px;
     filter: invert(40%) sepia(52%) saturate(200%) saturate(200%) saturate(200%) saturate(189%) hue-rotate(191deg) brightness(103%) contrast(102%);
     scale: 2;
-    
+  }
+  .item-favorite > div:first-child {
+      border: 4px solid #1f7fd6;
+      padding: 6px;
+      border-radius: 6px;
   }
   `
-  console.log('styles', styles)
+  // console.log('styles', styles)
   document.head.appendChild(styles)
 }
 
@@ -198,7 +202,7 @@ export function favoritesTMSetup() {
   }
 
   window.addEventListener('message', e => {
-    console.log(e.data)
+    // console.log(e.data)
     if (e.data.source === 'page') handle(e.data)
   })
 }

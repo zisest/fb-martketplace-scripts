@@ -1,5 +1,6 @@
 import {visitedOnTick, visitedPageSetup, visitedTMSetup} from "./visited";
 import {favoritesOnTick, favoritesPageSetup, favoritesTMSetup} from "./favorites";
+import {filtersOnTick, filtersPageSetup} from "./filters";
 
 export function main(this: any) {
   'use strict';
@@ -17,6 +18,7 @@ export function main(this: any) {
     // Функции, которые необходимо запускать, каждые 500 мс
     visitedOnTick()
     favoritesOnTick()
+    filtersOnTick()
 
     return tick
   }
@@ -25,6 +27,7 @@ export function main(this: any) {
     // Функции для запуска при window load
     visitedPageSetup()
     favoritesPageSetup()
+    filtersPageSetup()
 
   }
 
