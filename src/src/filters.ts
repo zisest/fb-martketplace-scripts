@@ -9,17 +9,54 @@ function assertIsSpan(el: Element): asserts el is HTMLSpanElement {
 /**
  * RED
  */
-const redWords = ['oroklini', 'ορόκλινη', 'oroklinh']
+const redWords = [
+  'oroklini', 'ορόκλινη',
+  'oroklinh', 'office', 'tersefanou', 'alethriko',
+  'aradippou',
+  'ground floor',
+  "lefkara pano",
+  "agios theodoros",
+  "alaminos",
+  "pervolia",
+  "maroni",
+  "mazotos",
+  "meneou",
+  "choirokoitia",
+  "anafotida",
+  "skarinou",
+  "anglisides",
+  "vavla",
+  "psematismenos",
+  "kalavasos",
+  "zygi",
+  "tochni",
+  "anafotida",
+  'dekelia',
+  "dhekelia",
+  "pyla",
+  "ormideia",
+  "xylofagou",
+  "troulloi",
+  "mosfiloti",
+  "psevdas",
+  "drys kato",
+  "vavatsinia",
+  "ora",
+  "kalo chorio",
+  "kornos",
+  'dromolaxia'
+
+]
 
 /**
  * YELLOW
  */
-const yellowWords: string[] = []
+const yellowWords: string[] = ['livadia']
 
 /**
  * GREEN
  */
-const greenWords = ['center', 'centre', 'sea']
+const greenWords = ['center', 'centre', 'sea', 'faneromenis', 'kamares', 'drosia', 'nikolaos', 'skala', 'sotiros']
 
 /** ON TICK */
 export function filtersOnTick() {
@@ -59,7 +96,7 @@ function applyFilters() {
       const text = caption.innerText;
       const wordIndex = text.toLocaleLowerCase().indexOf(word)
       if (wordIndex !== -1) {
-        caption.innerHTML = `${text.slice(0, wordIndex)}<em class="green">${text.slice(wordIndex, wordIndex + word.length)}</em>${text.slice(wordIndex + word.length)}`
+        caption.innerHTML = `${text.slice(0, wordIndex)}<em class="filter-green">${text.slice(wordIndex, wordIndex + word.length)}</em>${text.slice(wordIndex + word.length)}`
       }
     }
     for (const word of yellowWords) {
